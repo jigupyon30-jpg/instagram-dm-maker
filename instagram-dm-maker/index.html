@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>DMスクショメーカー</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://kit.fontawesome.com/6dff35d9de.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <main class="app">
+        <!--編集エリア-->
+        <section class="editor">
+            <h1 class="editor__title">DMスクショメーカー</h1>
+
+            <div class="editor__group">
+                <label class="editor__label" for="accountName">ユーザー名</label>
+                <input id="accountName" class="editor__input" type="text" value="jyu_yamanaka">
+            </div>
+
+            <div class="editor__group">
+                <label class="editor__label" for="displayName">表示名</label>
+                <input id="displayName" class="editor__input" type="text" value="jyu_yamanaka">
+            </div>
+
+            <div class="editor__group">
+                <label class="editor__label" for="messageText">メッセージ</label>
+                <textarea id="messageText" class="editor__textarea" placeholder="メッセージを入力"></textarea>
+            </div>
+
+            <div class="editor__group">
+                <label class="editor__label" for="messageReaction">リアクション</label>
+                <select id="messageReaction" class="editor__select">
+                    <option value="">なし</option>
+                    <option value="❤️">❤️</option>
+                    <option value="😂">😂</option>
+                    <option value="😭">😭</option>
+                    <option value="👍">👍</option>
+                    <option value="🔥">🔥</option>
+                    <option value="🥺">🥺</option>
+                </select>
+            </div>
+
+            <div class="editor__group">
+                <p class="editor__label">送信者</p>
+                <div class="editor__segmented">
+                    <label>
+                        <input type="radio" name="sender" value="me" checked>
+                        <span>自分</span>
+                    </label>
+                    <label>
+                        <input type="radio" name="sender" value="other">
+                        <span>相手</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="editor__group">
+                <label class="editor__label" for="messageType">
+                    メッセージ種類
+                </label>
+                <select id="messageType" class="editor__select">
+                    <option value="text">通常メッセージ</option>
+                    <option value="story">ストーリー引用</option>
+                    <option value="call">通話</option>
+                    <option value="missed-call">不在着信</option>
+                    <option value="video-call">ビデオ通話</option>
+                    <option value="missed-video-call">不在ビデオ通話</option>
+                </select>
+            </div>
+
+            <div class="editor__group">
+                <label class="editor__label" for="callDuration">
+                    通話時間
+                </label>
+                <input id="callDuration" class="editor__input" type="text" placeholder="15:32">
+            </div>
+
+            <div class="editor__group">
+                <label class="editor__check">
+                    <input id="showRead" type="checkbox" checked>
+                    <span>自分の最後のメッセージに既読を表示</span>
+                </label>
+            </div>
+
+            <div class="editor__group">
+                <label class="editor__label" for="storyImage">ストーリー引用風画像</label>
+                <input id="storyImage" class="editor__file" type="file" accept="image/*">
+            </div>
+
+            <div class="editor__actions">
+                <button id="addMessageButton" class="button button--primary" type="button">メッセージ追加</button>
+                <button id="addStoryButton" class="button button--secondary" type="button">画像引用を追加</button>
+                <button id="exportButton" class="button button--dark" type="button">画像として保存</button>
+            </div>
+        </section>
+
+        <!--DMプレビューエリア-->
+        <section class="preview-wrap">
+            <div id="captureArea" class="phone">
+                <header class="dm-header">
+                    <button class="dm-header__back" type="button" aria-label="戻る">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <div class="dm-header__profile-mini">
+                        <div class="avatar avatar--small">
+                            <i class="fa-solid fa-user"></i>
+                        </div>
+                        <p id="headerAccountName" class="dm-header__name">jyu_yamanaka</p>
+                        <i class="fa-solid fa-chevron-right dm-header__arrow"></i>
+                    </div>
+
+                    <div class="dm-header__icons">
+                        <i class="fa-solid fa-phone"></i>
+                        <i class="fa-solid fa-video"></i>
+                    </div>
+                </header>
+
+                <div class="dm-body">
+                    <p class="dm-time"></p>
+
+                    <section id="messageList" class="message-list">
+                    </section>
+                </div>
+
+                <footer class="dm-inputbar">
+                    <div class="dm-inputbar__camera">
+                        <i class="fa-solid fa-camera"></i>
+                    </div>
+
+                    <p class="dm-inputbar__placeholder">メッセージを入力...</p>
+                    <div class="dm-inputbar__icons">
+                        <i class="fa-solid fa-microphone"></i>
+                        <i class="fa-regular fa-image"></i>
+                        <i class="fa-regular fa-face-smile"></i>
+                        <i class="fa-solid fa-plus"></i>
+                    </div>
+                </footer>
+            </div>
+        </section>
+    </main>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>

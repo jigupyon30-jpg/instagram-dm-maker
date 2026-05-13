@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+* {
+    box-sizing: border-box;
+}
+html,
+body,
+h1,
+p,
+button,
+input,
+textarea {
+    margin: 0;
+    padding: 0;
+}
+body {
+    min-height: 100vh;
+}
+button,
+input,
+textarea {
+    font: inherit;
+}
+button {
+    border: none;
+    cursor: pointer;
+}
+img {
+    max-width: 100%;
+    display: block;
+}
